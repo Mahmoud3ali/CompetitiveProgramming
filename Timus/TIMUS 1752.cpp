@@ -1,3 +1,11 @@
+
+// tree diameter is the largest distance on a tree , so if at any time distance asked for is bigger then the answer is 0 .
+// we can consider all paths out from one node , but this gets TLE 
+// so we need to replace this with one path we know that if there's an answer it will be on it
+// in other words we need to replace it with the largest path out from the given node
+// looking at the tree diameter any node want to reach the largest path it has must join the diameter at some point
+// so we just need to look on the largest path from two paths each start at the given node and end at a different end of the diameter
+// in this way we are sure that if there's an answer it will be in this path.
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -26,7 +34,8 @@ int LCA(int x , int y)
     for(int i = 15 ; i >= 0 ; i--)
     {
         if(diff&(1<<i)) y= dp[i][y];
-    }    if(x == y) return x;
+    }
+    if(x == y) return x;
     for(int i = 15 ; i >= 0 ; i--)
     {
         if(dp[i][x] != dp[i][y])
@@ -61,7 +70,8 @@ int solve(int node , int d)
         int lca = LCA(node,l);
         if(dist(lca,node) >= d) return go(node,d);
         d-=dist(lca,node);
-        return go(l,dist(lca,l)-d);    }
+        return go(l,dist(lca,l)-d);
+    }
     else
     {
         int lca = LCA(node,r);
