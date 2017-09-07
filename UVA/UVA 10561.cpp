@@ -1,3 +1,17 @@
+/*
+ * things to observe before solving the problem
+ * ..X.. , ..X , X.. any move in these states results your loss 
+ * in other words don't play in any cell that is a distance < 2 from the nearest X , otherwise you lose
+ * consider you are given a pile of size n , and whenever you place x at some point
+ * you remove the right 2 free nodes and the left 2 free nodes (free == no X)
+ * at any move you make you only reduce the game either into two smaller piles or one (for example if you place x at the end or the begin)
+ * after a while you are left with group of independent games , you can solve each of them separately
+ * use the grundy number of each game to find the solution for the main pile
+ * to calculate the grundy for each size n just try every possible move if it results two piles XOR their grundy and add it to your set 
+ * base cases can be 0 , 1 , 2 because any move will result a pile of size zero
+ * to output the set of moves , recall that you need your opponent to lose in other words to move to state with G(grundy number) = 0
+ * try all the n moves at first and see if the result string is a lose or win by the previous approach
+ */
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
