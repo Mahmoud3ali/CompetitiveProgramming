@@ -59,8 +59,6 @@ int trip(string s)
 }
 int main()
 {
-	freopen("out.txt","w",stdout);
-	freopen("in.txt","r",stdin);
 	memset(dp,-1,sizeof dp);
 	dp[0] = 0 ;
 	int t;
