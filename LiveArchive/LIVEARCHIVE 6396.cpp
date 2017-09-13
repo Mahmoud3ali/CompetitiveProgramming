@@ -1,3 +1,14 @@
+/*
+ * f(k) = size()!/ (freq(p1)! * freq(p2) * freq(p3) *....) (multinomial thereom)
+ * first thing to notice that if you're going to use 3 different frequencies
+ * you need to assign the largest frequency to the first prime , then 2nd then 3rd , and so on
+ * so you need to find only vectors of the form where v[i] >= v[i+1] for any i
+ * also these vectors must satisfy the coniditon that f( vector<> ) <= (1<<63-1)
+ * this can be done recursively using long double to avoid over flow problems and some prime factorization
+ * as not to calculate factorials of numbers >= 22
+ * then for each of these vectors find f( vector[i] )
+ * and minimize f(ans) through all the vectors which have the same f()
+ */
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
