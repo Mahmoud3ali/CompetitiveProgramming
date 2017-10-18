@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+#define endl '\n'
+typedef long long ll;
+inline void coutt(int a)
+{
+	if (a < 0)
+	{
+		putchar('-');
+		a = -a;
+	}
+	if (a >= 10)
+	{
+		coutt(a / 10);
+	}
+	putchar(a % 10 + '0');
+}
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	priority_queue<int> q;
+	int currsz = n;
+	printf("1 ");
+	for(int i = 0 ; i < n ; i++)
+	{
+		int x;
+		scanf("%d",&x);
+		q.push(x);
+		while(q.top() == currsz)
+		{
+			q.pop();
+			currsz--;
+		}
+		coutt(q.size()+1);
+		printf(" ");
+	}
+}
